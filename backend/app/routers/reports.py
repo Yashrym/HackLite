@@ -5,6 +5,7 @@ from uuid import uuid4
 
 from bson import ObjectId
 from fastapi import APIRouter, File, HTTPException, Query, Request, UploadFile
+from pymongo.errors import ServerSelectionTimeoutError
 
 from app.config import settings
 from app.database import get_db
@@ -58,7 +59,17 @@ async def _insert_report_doc(
         "description": description,
         "detections": detections,
     }
-    result = await db.reports.insert_one(doc)
+    try:
+        result = await db.reports.insert_one(doc)
+    except ServerSelectionTimeoutError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "MongoDB is unavailable. Start MongoDB locally or configure a valid "
+                "MONGODB_URI / MONGODB_URL in backend/.env."
+            ),
+        ) from exc
+
     doc["_id"] = result.inserted_id
     return _doc_to_response(doc)
 

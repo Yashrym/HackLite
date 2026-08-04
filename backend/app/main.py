@@ -4,6 +4,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from pymongo.errors import ServerSelectionTimeoutError
 
 from app.config import settings
 from app.database import close_db, get_db
@@ -41,6 +42,8 @@ async def health():
         db = get_db()
         await db.command("ping")
         mongo_ok = True
+    except ServerSelectionTimeoutError:
+        mongo_ok = False
     except Exception:
         mongo_ok = False
     return {"status": "ok", "mongodb": mongo_ok}
