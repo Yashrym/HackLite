@@ -1,0 +1,10 @@
+﻿fastapi
+uvicorn[standard]
+motor
+pydantic>=2.0
+pydantic-settings
+ultralytics
+opencv-python
+pillow
+python-multipart
+python-dotenv

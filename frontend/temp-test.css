@@ -1,0 +1,1 @@
+﻿@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n.btn-accent {\n  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2;\n}\n
