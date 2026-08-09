@@ -1,7 +1,7 @@
 # VisionRoute
 
 AI-powered, crowd-sourced road infrastructure monitoring. Citizens upload road imagery; the backend runs **YOLOv8** inference; authorities triage reports on an **OpenStreetMap** dashboard with analytics and disaster mode.
----
+
 
 ##  Project Demo
 
@@ -9,7 +9,7 @@ Watch our project walkthrough and live demonstration on YouTube:
 
 ▶️ **[Watch the VisionRoute Demo on YouTube](https://youtu.be/eez4peqGAUI)**
 
----
+
 
 ## Stack
 
