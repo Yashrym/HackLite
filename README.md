@@ -28,7 +28,7 @@ Watch our project walkthrough and live demonstration on YouTube:
 ## Project structure
 
 ```
-HACKKKK/
+CodePulse_HackLite/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py
